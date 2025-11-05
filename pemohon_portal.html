@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal Pemohon - SIMPEL Terpadu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* CSS Tambahan untuk Simulasi Pop-up/Modal */
+      .modal {
+        display: none; /* Sembunyikan secara default */
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Background gelap */
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* Jarak dari atas dan tengah horizontal */
+        padding: 30px;
+        border: 1px solid #888;
+        border-radius: 8px;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-content h3 {
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+
+      #tracking-code-display {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #007bff;
+        padding: 10px;
+        border: 2px dashed #007bff;
+        border-radius: 4px;
+        display: block;
+        margin: 15px 0;
+        cursor: copy; /* Indikasi bisa dicopy */
+      }
+
+      .close-btn {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .close-btn:hover,
+      .close-btn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body onload="checkLogin()">
+    <header>
+      <div class="container">
+        <h1>SIMPEL TERPADU 🚀</h1>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="#" class="active">Portal Pemohon</a>
+          <a href="#" onclick="logout()">Logout</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="portal-form-section" style="margin-bottom: 30px">
+        <h2>Portal Pemohon - Selamat Datang, Bpk. Andi!</h2>
+        <p>
+          Status Akun: **Terverifikasi** | Terakhir Login: 14 Okt 2025, 08:00
+          WIB
+        </p>
+      </section>
+
+      <section class="portal-form-section" style="margin-bottom: 30px">
+        <h3><i class="fas fa-file-upload"></i> Formulir Pengajuan Baru</h3>
+        <form
+          onsubmit="event.preventDefault(); if(!checkLogin()) return; submitPermohonan();"
+        >
+          <div class="form-group">
+            <label for="jenis_izin">Pilih Jenis Perizinan:</label>
+            <select id="jenis_izin" required>
+              <option value="">-- Pilih --</option>
+              <option value="IMB">Izin Mendirikan Bangunan (IMB)</option>
+              <option value="SIP">Izin Usaha</option>
+              <option value="IzinLingkungan">Izin Lingkungan</option>
+            </select>
+            <i
+              class="fas fa-question-circle"
+              style="margin-left: 10px; cursor: pointer; color: #007bff"
+              onclick="showRequiredDocs()"
+            ></i>
+          </div>
+          <div class="form-group">
+            <label for="judul_izin">Judul Permohonan:</label>
+            <input
+              type="text"
+              id="judul_izin"
+              placeholder="Contoh: IMB Pembangunan Ruko 2 Lantai"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="upload_dokumen"
+              >Unggah Dokumen Pendukung (PDF/JPG, Maks 5MB):</label
+            >
+            <input type="file" id="upload_dokumen" multiple required />
+          </div>
+          <button type="submit" class="btn-primary">Kirim Pengajuan</button>
+        </form>
+      </section>
+
+      <section class="portal-form-section">
+        <h3><i class="fas fa-history"></i> Riwayat Permohonan</h3>
+        <div class="data-table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID Tracking</th>
+                <th>Jenis Izin</th>
+                <th>Tanggal Ajuan</th>
+                <th>Status Terakhir</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>PZN-20251008-001</td>
+                <td>IMB</td>
+                <td>10/10/2025</td>
+                <td style="color: #ffc107; font-weight: bold">
+                  Verifikasi Administrasi
+                </td>
+                <td>
+                  <a
+                    href="index.html#tracking-result"
+                    class="btn-primary"
+                    style="background-color: #6c757d; padding: 5px 10px"
+                    >Lacak</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>PZN-20251009-002</td>
+                <td>Izin Lingkungan</td>
+                <td>12/10/2025</td>
+                <td>Butuh Perbaikan Dokumen</td>
+                <td>
+                  <a href="#" class="btn-primary" style="padding: 5px 10px"
+                    >Unggah Ulang</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>PZN-20250901-010</td>
+                <td>SIP</td>
+                <td>01/09/2025</td>
+                <td style="color: #28a745; font-weight: bold">
+                  Selesai (Diterbitkan)
+                </td>
+                <td>
+                  <a
+                    href="#"
+                    class="btn-primary"
+                    style="background-color: #28a745; padding: 5px 10px"
+                    >Unduh SK</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+      </div>
+    </footer>
+
+    <div id="trackingModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h3><i class="fas fa-check-circle"></i> Pengajuan Berhasil!</h3>
+        <p>
+          Permohonan Anda telah terkirim. Harap catat Kode Tracking Anda untuk
+          melacak status:
+        </p>
+        <span id="tracking-code-display" title="Klik untuk menyalin"
+          >PZN-20251012-012</span
+        >
+        <p style="font-size: 0.9em; color: #6c757d">
+          Kode ini juga dikirimkan ke email Anda.
+        </p>
+        <button class="btn-primary" onclick="copyCode()">Salin Kode</button>
+      </div>
+    </div>
+
+    <div id="docsModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeDocsModal()">&times;</span>
+        <h3><i class="fas fa-file-alt"></i> Dokumen yang Harus Diunggah</h3>
+        <ul
+          id="docs-list"
+          style="text-align: left; list-style-type: disc; padding-left: 20px"
+        >
+          <!-- List dokumen akan diisi oleh JavaScript -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk membuat kode tracking acak
+      function generateTrackingCode(prefix) {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+
+        // Angka acak 3 digit
+        const randomNum = String(Math.floor(Math.random() * 900) + 100);
+
+        return `${prefix}-${year}${month}${day}-${randomNum}`;
+      }
+
+      // Fungsi utama saat formulir disubmit
+      function submitPermohonan() {
+        const jenisIzin = document.getElementById("jenis_izin").value;
+        let prefix = "PZN"; // Default prefix
+
+        if (jenisIzin === "SIP") {
+          prefix = "SIP";
+        } else if (jenisIzin === "IzinLingkungan") {
+          prefix = "LGL";
+        }
+
+        const newCode = generateTrackingCode(prefix);
+
+        // 1. Tampilkan kode di modal
+        document.getElementById("tracking-code-display").textContent = newCode;
+
+        // 2. Tampilkan modal
+        openModal();
+
+        // Opsional: Langsung tambahkan ke riwayat permohonan di halaman ini (simulasi)
+        // Anda bisa implementasikan ini jika ingin melihat kode baru langsung di tabel.
+      }
+
+      // Fungsi Modal
+      const modal = document.getElementById("trackingModal");
+
+      function openModal() {
+        modal.style.display = "block";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      // Tutup modal jika user klik di luar area modal
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
+
+      // Fungsi Salin Kode (API Clipboard)
+      function copyCode() {
+        const codeDisplay = document.getElementById("tracking-code-display");
+        const code = codeDisplay.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            alert(`Kode Tracking "${code}" berhasil disalin!`);
+          })
+          .catch((err) => {
+            console.error("Gagal menyalin:", err);
+            alert("Gagal menyalin kode. Silakan salin manual.");
+          });
+      }
+    </script>
+    <script>
+      function checkLogin() {
+        if (
+          localStorage.getItem("isLoggedIn") === "true" &&
+          localStorage.getItem("role") === "pemohon"
+        ) {
+          return true;
+        } else {
+          window.location.href = "login.html";
+          return false;
+        }
+      }
+
+      function logout() {
+        localStorage.clear();
+        window.location.href = "index.html";
+      }
+
+      function showRequiredDocs() {
+        const jenisIzin = document.getElementById("jenis_izin").value;
+        const docsList = document.getElementById("docs-list");
+        docsList.innerHTML = ""; // Clear previous list
+
+        let docs = [];
+        if (jenisIzin === "IMB") {
+          docs = [
+            "Kartu Tanda Penduduk (KTP)",
+            "Nomor Pokok Wajib Pajak (NPWP)",
+            "Sertifikat Tanah",
+            "Bukti Pembayaran PBB (Pajak Bumi dan Bangunan) Terakhir",
+            "Gambar Rencana Bangunan",
+            "Surat Izin Tetangga(jika diperlukan)",
+          ];
+        } else if (jenisIzin === "SIP") {
+          docs = [
+            "Kartu Tanda Penduduk (KTP)",
+            "Nomor Pokok Wajib Pajak (NPWP)",
+            "Nomor Induk Berusaha (NIB)",
+            "Surat Keterangan Domisili Usaha (SKDU)",
+            "Surat Izin Lingkungan",
+            "Foto Lokasi Usaha",
+          ];
+        } else if (jenisIzin === "IzinLingkungan") {
+          docs = [
+            "Kartu Tanda Penduduk (KTP)",
+            "AMDAL (Analisis Mengenai Dampak Lingkungan)",
+            "Surat Izin Usaha",
+            "Surat Pernyataan Kesanggupan",
+            "Dokumen Teknis Lingkungan (Denah Lokasi Kegiatan/Gambar bangunan)",
+          ];
+        } else {
+          docs = ["Pilih jenis perizinan terlebih dahulu."];
+        }
+
+        docs.forEach((doc) => {
+          const li = document.createElement("li");
+          li.textContent = doc;
+          docsList.appendChild(li);
+        });
+
+        document.getElementById("docsModal").style.display = "block";
+      }
+
+      function closeDocsModal() {
+        document.getElementById("docsModal").style.display = "none";
+      }
+
+      // Tutup modal docs jika user klik di luar area modal
+      window.onclick = function (event) {
+        const docsModal = document.getElementById("docsModal");
+        if (event.target == docsModal) {
+          closeDocsModal();
+        }
+      };
+    </script>
+  </body>
+</html>

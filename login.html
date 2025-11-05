@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login SIMPEL Terpadu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>SIMPEL TERPADU 🚀</h1>
+        <nav>
+          <a href="index.html">Beranda</a>
+          <a href="pemohon_portal.html">Portal Pemohon</a>
+          <a href="#" class="active">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="login-container">
+        <h2>Masuk ke SIMPEL Terpadu</h2>
+        <p>Silakan masukkan kredensial Anda sesuai dengan peran pengguna.</p>
+
+        <form onsubmit="event.preventDefault(); handleLogin();">
+          <div class="form-group">
+            <label for="username"
+              ><i class="fas fa-user"></i> Nama Pengguna / Email</label
+            >
+            <input
+              type="text"
+              id="username"
+              placeholder="Masukkan ID Pengguna atau Email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> Kata Sandi</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Masukkan Kata Sandi"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="role"
+              ><i class="fas fa-user-tag"></i> Masuk Sebagai</label
+            >
+            <select id="role" onchange="handleRoleChange()" required>
+              <option value="pemohon">Pemohon (Masyarakat)</option>
+              <option value="petugas">Petugas/Admin</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-primary" id="login-button">
+            Masuk ke Portal
+          </button>
+        </form>
+
+        <div class="register-link">
+          <p>Belum punya akun pemohon?</p>
+          <a href="#">Daftar Akun Baru <i class="fas fa-user-plus"></i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+      </div>
+    </footer>
+    <script>
+      function handleLogin() {
+        const username = document.getElementById("username").value;
+        const role = document.getElementById("role").value;
+
+        // Logika simulasi login berdasarkan peran
+        if (role === "pemohon") {
+          alert(
+            `Login berhasil sebagai ${username}. Mengarahkan ke Portal Pemohon...`
+          );
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("role", "pemohon");
+          window.location.href = "pemohon_portal.html";
+        } else if (role === "petugas") {
+          alert(
+            `Login berhasil sebagai ${username}. Mengarahkan ke Portal Petugas...`
+          );
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("role", "petugas");
+          window.location.href = "petugas_dashboard.html";
+        } else if (role === "pimpinan") {
+          alert(
+            `Login berhasil sebagai ${username}. Mengarahkan ke Dashboard Pimpinan...`
+          );
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("role", "pimpinan");
+          window.location.href = "pimpinan_dashboard.html";
+        }
+        // Dalam aplikasi nyata, Anda akan melakukan validasi kredensial di server.
+      }
+
+      function handleRoleChange() {
+        const role = document.getElementById("role").value;
+        if (role === "pemohon") {
+          alert(
+            "Login berhasil sebagai Pemohon. Mengarahkan ke Portal Pemohon..."
+          );
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("role", "pemohon");
+          window.location.href = "pemohon_portal.html";
+        }
+      }
+    </script>
+  </body>
+</html>

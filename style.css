@@ -1,0 +1,644 @@
+/* RESET & BASE STYLES */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #007bff; /* Biru Pemerintah */
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+main {
+  padding: 30px 0;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #ccc;
+  margin: 40px 0;
+}
+
+/* --- MODUL A/C: TRACKING & BERANDA --- */
+.tracking-module {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.tracking-module h2 {
+  color: #007bff;
+  margin-top: 0;
+}
+
+.tracking-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#tracking-input {
+  padding: 12px;
+  flex-grow: 1;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.tracking-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.tracking-form button:hover {
+  background-color: #218838;
+}
+
+/* Timeline Status (C) */
+.status-timeline {
+  margin-top: 30px;
+  padding: 20px;
+  border-left: 3px solid #007bff;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-item i {
+  font-size: 1.5em;
+  width: 30px;
+  text-align: center;
+  position: absolute;
+  left: -15px;
+  background-color: white;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+.timeline-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+}
+
+.timeline-item p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.timeline-item .note {
+  display: block;
+  margin-top: 5px;
+  font-style: italic;
+  color: #dc3545; /* Merah untuk catatan perbaikan */
+  font-weight: bold;
+}
+
+.timeline-item.completed i {
+  color: #28a745;
+}
+.timeline-item.active i {
+  color: #ffc107;
+}
+.timeline-item.pending i {
+  color: #ccc;
+}
+.hidden {
+  display: none;
+}
+
+/* --- MODUL B: PORTAL PEMOHON --- */
+.portal-form-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Riwayat Permohonan Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.data-table th,
+.data-table td {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  text-align: left;
+  font-size: 0.9em;
+}
+.data-table th {
+  background-color: #f8f9fa;
+}
+
+/* --- MODUL D/E: DASHBOARD & PETUGAS/PIMPINAN --- */
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+@media (min-width: 900px) {
+  .dashboard-layout {
+    grid-template-columns: 2fr 1fr; /* Layout dua kolom besar/kecil */
+  }
+}
+
+.kpi-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 200px;
+  border-left: 5px solid #007bff;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #555;
+  font-size: 1em;
+}
+
+.card .data-kpi {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #007bff;
+  margin: 5px 0 0 0;
+}
+
+.card.green {
+  border-left-color: #28a745;
+}
+.card.green .data-kpi {
+  color: #28a745;
+}
+
+.card.red {
+  border-left-color: #dc3545;
+}
+.card.red .data-kpi {
+  color: #dc3545;
+}
+
+.chart-placeholder,
+.task-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 25px;
+}
+
+.chart-placeholder {
+  min-height: 250px;
+  text-align: center;
+  line-height: 250px;
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+/* Modul D: Petugas Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info h4 {
+  margin: 0 0 5px 0;
+  color: #007bff;
+}
+
+.task-info p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #6c757d;
+}
+
+.task-action .btn-secondary {
+  background-color: #ffc107;
+  color: #333;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.task-action .btn-secondary:hover {
+  background-color: #e0a800;
+}
+
+/* FOOTER */
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+/* --- Tambahan Gaya untuk Halaman Login --- */
+
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  color: #6c757d;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.form-group i.fas {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+#login-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.register-link {
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.register-link p {
+  margin: 0 0 10px 0;
+  font-size: 0.9em;
+}
+
+.register-link a {
+  color: #28a745;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* --- Tambahan Gaya untuk Simulasi Grafik Pimpinan --- */
+
+.chart-bar-sim {
+  height: auto !important; /* Override default height */
+  line-height: normal !important;
+  text-align: left !important;
+  padding: 20px;
+  background-color: white !important;
+  box-shadow: none !important;
+}
+
+.bar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.bar-label {
+  width: 150px;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #333;
+}
+
+.bar {
+  height: 25px;
+  border-radius: 4px;
+  line-height: 25px;
+  color: white;
+  font-size: 0.8em;
+  text-align: right;
+  padding-right: 5px;
+  transition: width 0.5s;
+  margin-left: 10px;
+}
+
+/* Simulasi Grafik Garis */
+.chart-line-sim {
+  position: relative;
+  height: 250px !important;
+  background: white !important;
+  line-height: normal !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  box-shadow: none !important;
+}
+
+.line-point {
+  width: 20px;
+  height: 20px;
+  background-color: #007bff;
+  border-radius: 50%;
+  position: relative;
+  font-size: 0.8em;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  line-height: 20px;
+  border: 3px solid white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Mensimulasikan Ketinggian Garis */
+.point-low {
+  margin-bottom: 20px;
+  background-color: #28a745;
+}
+.point-medium {
+  margin-bottom: 70px;
+  background-color: #ffc107;
+}
+.point-high {
+  margin-bottom: 120px;
+  background-color: #dc3545;
+}
+
+/* Mensimulasikan Garis Penghubung (Hanya ilustrasi visual) */
+.chart-line-sim::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  background: repeating-linear-gradient(
+    to top,
+    transparent,
+    transparent 24px,
+    #eee 25px,
+    #eee 26px
+  );
+  z-index: 5;
+}
+
+.chart-line-sim::after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    #28a745 0%,
+    #ffc107 25%,
+    #dc3545 50%,
+    #ffc107 75%,
+    #28a745 100%
+  );
+  z-index: 8;
+}
+
+/* --- Tambahan Gaya untuk Simulasi Grafik Petugas --- */
+
+.chart-petugas-sim {
+  height: 180px !important;
+  position: relative;
+  background-color: white !important;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+
+.petugas-line-chart {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  height: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-left: 1px dotted #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Base style for dots */
+.dot-in,
+.dot-out {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  line-height: 15px;
+  font-size: 0.7em;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  z-index: 10;
+}
+
+/* Tugas Masuk (Biru) */
+.dot-in {
+  background-color: #007bff;
+}
+.dot-in-10 {
+  margin-bottom: 20px;
+}
+.dot-in-15 {
+  margin-bottom: 50px;
+}
+.dot-in-20 {
+  margin-bottom: 80px;
+}
+
+/* Tugas Selesai (Hijau) */
+.dot-out {
+  background-color: #28a745;
+  transform: translate(
+    50%,
+    0
+  ); /* Menggeser sedikit agar tidak menumpuk sempurna */
+}
+.dot-out-8 {
+  margin-bottom: 10px;
+}
+.dot-out-12 {
+  margin-bottom: 35px;
+}
+.dot-out-18 {
+  margin-bottom: 65px;
+}
+
+/* --- Simulasi Pie Chart --- */
+
+.chart-pie-sim {
+  height: 150px !important;
+  width: 150px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background: conic-gradient(
+    #007bff 0% 35%,
+    /* IMB 35% */ #28a745 35% 75%,
+    /* SIP 40% (35 + 40 = 75) */ #ffc107 75% 100% /* Izin Lingkungan 25% */
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pie-slice {
+  position: absolute;
+  font-weight: bold;
+  color: white;
+  font-size: 0.8em;
+}
+
+/* Posisi teks persentase */
+.slice-1 {
+  transform: translate(-35px, -35px);
+}
+.slice-2 {
+  transform: translate(30px, -20px);
+}
+.slice-3 {
+  transform: translate(0px, 40px);
+  color: #333;
+}

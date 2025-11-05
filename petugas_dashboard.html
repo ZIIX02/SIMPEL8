@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Petugas - SIMPEL Terpadu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SIMPEL TERPADU 🚀</h1>
+            <nav>
+                <a href="#" class="active">Portal Petugas</a>
+                <a href="pimpinan_dashboard.html">Dashboard Admin</a>
+                <a href="login.html">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Portal Petugas - Kotak Tugas Verifikasi</h2>
+        <p>Selamat Datang, **Petugas Siti M.** (Bidang Administrasi) | Anda memiliki **3 Tugas Mendesak**.</p>
+        <hr>
+
+        <div class="dashboard-layout">
+            <div class="task-box">
+                <h3><i class="fas fa-inbox"></i> Tugas Saya (Perlu Aksi Segera)</h3>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <div class="task-info">
+                            <h4>Verifikasi Administrasi: PZN-20251015-003</h4>
+                            <p>Jenis Izin: IMB | Pemohon: PT Sinar Abadi | Batas Waktu: 15:00 Hari Ini</p>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn-secondary" onclick="verifikasiPermohonan('PZN-20251015-003')">Proses <i class="fas fa-edit"></i></button>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-info">
+                            <h4>Verifikasi Dokumen Ulang: PZN-20251009-002</h4>
+                            <p>Jenis Izin: Izin Lingkungan | Pemohon: CV Alam Lestari | Batas Waktu: Besok</p>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn-secondary" onclick="verifikasiPermohonan('PZN-20251009-002')">Proses <i class="fas fa-edit"></i></button>
+                        </div>
+                    </li>
+                    <li class="task-item">
+                        <div class="task-info">
+                            <h4>Verifikasi Administrasi: SIP-20251016-004</h4>
+                            <p>Jenis Izin: SIP | Pemohon: Dr. Budi Santoso | Batas Waktu: 2 Hari Lagi</p>
+                        </div>
+                        <div class="task-action">
+                            <button class="btn-secondary" onclick="verifikasiPermohonan('SIP-20251016-004')">Proses <i class="fas fa-edit"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="task-box">
+                <h3>Kinerja & Beban Kerja</h3>
+                <div class="kpi-cards" style="margin: 0;">
+                    <div class="card green" style="min-width: unset; flex: 1;">
+                        <h3>Tugas Selesai (Bulan Ini)</h3>
+                        <p class="data-kpi">58</p>
+                    </div>
+                    <div class="card red" style="min-width: unset; flex: 1;">
+                        <h3>Rata-rata Keterlambatan</h3>
+                        <p class="data-kpi">0.5 Hari</p>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 20px; color: #555;">Beban Kerja 7 Hari Terakhir</h4>
+                <div class="chart-placeholder chart-petugas-sim">
+                    <div class="petugas-line-chart">
+                        <div class="dot-in dot-in-10">10</div>
+                        <div class="dot-out dot-out-8">8</div>
+                        <div class="dot-in dot-in-15">15</div>
+                        <div class="dot-out dot-out-12">12</div>
+                        <div class="dot-in dot-in-20">20</div>
+                        <div class="dot-out dot-out-18">18</div>
+                    </div>
+                    <p style="text-align: center; font-size: 0.8em; color: #6c757d; margin-top: 10px;">
+                        <span style="color: #007bff;">&#9679; Tugas Masuk</span> | <span style="color: #28a745;">&#9679; Tugas Selesai</span>
+                    </p>
+                </div>
+
+                <h4 style="margin-top: 20px; color: #555;">Distribusi Jenis Permohonan</h4>
+                <div class="chart-placeholder chart-pie-sim">
+                    <div class="pie-slice slice-1">35%</div>
+                    <div class="pie-slice slice-2">40%</div>
+                    <div class="pie-slice slice-3">25%</div>
+                </div>
+                <p style="text-align: left; font-size: 0.8em; color: #6c757d;">
+                    <span style="color: #007bff;">&#9632; IMB (35%)</span> | <span style="color: #28a745;">&#9632; SIP (40%)</span> | <span style="color: #ffc107;">&#9632; Izin Lingkungan (25%)</span>
+                </p>
+            </div>
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

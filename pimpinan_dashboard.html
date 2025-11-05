@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pimpinan - SIMPEL Terpadu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SIMPEL TERPADU 🚀</h1>
+            <nav>
+                <a href="petugas_dashboard.html">Portal Petugas</a>
+                <a href="pimpinan_dashboard.html" class="active">Dashboard Admin</a>
+                <a href="login.html">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>Dashboard Kinerja Admin <i class="fas fa-chart-line"></i></h2>
+        <p>Periode: **Oktober 2025** | Data Real-time per 14 Okt 2025</p>
+        <hr>
+
+        <section class="kpi-section">
+            <div class="kpi-cards">
+                <div class="card">
+                    <h3>Total Permohonan Bulan Ini</h3>
+                    <p class="data-kpi">452</p>
+                </div>
+                <div class="card green">
+                    <h3>Waktu Penyelesaian Rata-rata (SLA)</h3>
+                    <p class="data-kpi">5.2 Hari</p>
+                </div>
+                <div class="card red">
+                    <h3>Tertunda (Melebihi SLA 7 Hari)</h3>
+                    <p class="data-kpi">15 Kasus</p>
+                </div>
+                <div class="card">
+                    <h3>Tingkat Kepuasan Masyarakat</h3>
+                    <p class="data-kpi">87%</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="dashboard-layout">
+            <div class="left-charts">
+                
+                <div class="task-box">
+                    <h3><i class="fas fa-chart-bar"></i> Peta Bottleneck Alur Kerja (Waktu Proses Rata-rata)</h3>
+                    <div class="chart-placeholder chart-bar-sim">
+                        <div class="bar-container">
+                            <div class="bar-label">Pengajuan Dok.</div>
+                            <div class="bar" style="width: 15%; background-color: #28a745;">0.5 Hari</div>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-label">Verifikasi Admin</div>
+                            <div class="bar" style="width: 30%; background-color: #ffc107;">1.5 Hari</div>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-label">Survei Lapangan</div>
+                            <div class="bar" style="width: 70%; background-color: #dc3545;">3.5 Hari</div>
+                        </div>
+                        <div class="bar-container">
+                            <div class="bar-label">Penerbitan Izin</div>
+                            <div class="bar" style="width: 10%; background-color: #007bff;">0.2 Hari</div>
+                        </div>
+                        <p style="text-align: right; font-size: 0.8em; margin-top: 10px; color: #6c757d;">*Identifikasi Bottleneck pada **Survei Lapangan**</p>
+                    </div>
+                </div>
+                
+                <div class="task-box">
+                    <h3><i class="fas fa-chart-line"></i> Tren Kasus Tertunda (> SLA) Bulanan</h3>
+                    <div class="chart-placeholder chart-line-sim">
+                        <div class="line-point point-low">5</div>
+                        <div class="line-point point-medium">12</div>
+                        <div class="line-point point-high">15</div>
+                        <div class="line-point point-medium">10</div>
+                        <div class="line-point point-low">8</div>
+                        <p style="position: absolute; bottom: 5px; width: 90%; display: flex; justify-content: space-between; font-size: 0.8em; color: #333;"><span>Mei</span><span>Jun</span><span>Jul</span><span>Agu</span><span>Sep</span><span>Okt</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-data">
+                <div class="task-box">
+                    <h3><i class="fas fa-exclamation-circle"></i> Detail Tertunda > 7 Hari</h3>
+                    <ul class="task-list">
+                        <li class="task-item" style="border-left: 4px solid #dc3545;">
+                            <div class="task-info">
+                                <h4>PZN-20250920-007</h4>
+                                <p>Tunggakan: **21 Hari** | Status: Tinjauan Lapangan</p>
+                            </div>
+                        </li>
+                        <li class="task-item" style="border-left: 4px solid #dc3545;">
+                            <div class="task-info">
+                                <h4>SIP-20250925-011</h4>
+                                <p>Tunggakan: **12 Hari** | Status: Verifikasi Dokumen</p>
+                            </div>
+                        </li>
+                         <li class="task-item" style="border-left: 4px solid #dc3545;">
+                            <div class="task-info">
+                                <h4>LGL-20251001-002</h4>
+                                <p>Tunggakan: **10 Hari** | Status: Rapat Tim Teknis</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+        </div>
+    </footer>
+</body>
+</html>

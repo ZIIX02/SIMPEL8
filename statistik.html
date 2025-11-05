@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kinerja - SIMPEL Terpadu</title>
+    <nav>
+    <a href="layanan.html">Layanan</a>
+    <a href="statistik.html">Statistik</a> <a href="#login">Login</a>
+</nav>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS tambahan untuk halaman ini, agar tidak perlu mengedit style.css */
+        .chart-placeholder {
+            background-color: #e9ecef;
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+        .dashboard-header h2 {
+            margin: 0;
+            color: #007bff;
+        }
+        .date-filter {
+            padding: 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .data-table-container {
+            overflow-x: auto;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-bottom: 30px;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #f8f9fa;
+            color: #495057;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .data-table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SIMPEL TERPADU 🚀</h1>
+            <nav>
+                <a href="index.html">Beranda</a>
+                <a href="layanan.html">Layanan</a>
+                <a href="statistik.html" class="active">Statistik</a> <a href="#login">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="dashboard-header">
+            <h2>Dashboard Kinerja Pimpinan - Oktober 2025</h2>
+            <select class="date-filter">
+                <option>Oktober 2025</option>
+                <option>September 2025</option>
+                <option>Agustus 2025</option>
+            </select>
+        </div>
+
+        <section class="dashboard-module">
+            <div class="kpi-cards">
+                <div class="card">
+                    <h3>Total Permohonan Diterima</h3>
+                    <p class="data-kpi">452</p>
+                </div>
+                <div class="card green">
+                    <h3>Waktu Proses Rata-rata</h3>
+                    <p class="data-kpi">5.2 Hari</p>
+                </div>
+                <div class="card red">
+                    <h3>Tunggakan (Melebihi SLA)</h3>
+                    <p class="data-kpi">15 Kasus</p>
+                </div>
+                <div class="card">
+                    <h3>Tingkat Kepuasan Masyarakat</h3>
+                    <p class="data-kpi">87%</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+        <section class="visualization-section">
+            <h3>Peta Panas Kinerja Bidang (Identifikasi Bottleneck)</h3>
+            <div class="chart-placeholder">
+                Placeholder Grafik Batang: Perbandingan Waktu Proses Rata-Rata per Bidang
+            </div>
+
+            <h3>Tren Permohonan (Bulanan)</h3>
+            <div class="chart-placeholder">
+                Placeholder Grafik Garis: Jumlah Permohonan Masuk vs Selesai
+            </div>
+        </section>
+
+        <hr>
+        <section class="detail-data-section">
+            <h3>Detail Tunggakan Perizinan (> 7 Hari)</h3>
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Permohonan</th>
+                            <th>Jenis Izin</th>
+                            <th>Pemohon</th>
+                            <th>Status Terakhir</th>
+                            <th>Bidang Penanggung Jawab</th>
+                            <th>Waktu Tunggu (Hari)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>PZN-20250920-007</td>
+                            <td>IMB Bisnis</td>
+                            <td>PT Maju Jaya</td>
+                            <td style="color: red; font-weight: bold;">Menunggu Tinjauan Lapangan</td>
+                            <td>Bidang Teknik</td>
+                            <td>21 Hari</td>
+                        </tr>
+                        <tr>
+                            <td>SIP-20250925-011</td>
+                            <td>Surat Izin Praktik Dokter</td>
+                            <td>Dr. Rina Sari</td>
+                            <td style="color: orange;">Verifikasi Dokumen Kurang</td>
+                            <td>Bidang Administrasi</td>
+                            <td>12 Hari</td>
+                        </tr>
+                         <tr>
+                            <td>LGL-20251001-002</td>
+                            <td>Izin Lingkungan</td>
+                            <td>CV Alam Lestari</td>
+                            <td style="color: red; font-weight: bold;">Menunggu Rapat Tim Teknis</td>
+                            <td>Bidang Hukum & Lingkungan</td>
+                            <td>10 Hari</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+        </div>
+    </footer>
+</body>
+</html>

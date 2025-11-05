@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beranda - SIMPEL Terpadu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>SIMPEL TERPADU 🚀</h1>
+        <nav>
+          <a href="pemohon_portal.html" onclick="return checkLogin();">Portal Pemohon</a>
+          <a href="login.html">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="info-module tracking-module">
+        <h2>Selamat Datang di SIMPEL Terpadu</h2>
+        <p>
+          Sistem Informasi Manajemen Perizinan Elektronik terpadu yang menjamin
+          transparansi dan efisiensi birokrasi.
+        </p>
+        <p>
+          Mulai pengajuan perizinan Anda atau cek status permohonan yang sudah
+          ada.
+        </p>
+        <a
+          href="pemohon_portal.html"
+          class="btn-primary"
+          style="text-decoration: none; display: inline-block"
+          onclick="return checkLogin();"
+          >Ajukan Permohonan Baru <i class="fas fa-arrow-right"></i
+        ></a>
+      </section>
+
+      <section class="tracking-module">
+        <h2>Lacak Status Permohonan Anda <i class="fas fa-route"></i></h2>
+        <p>
+          Masukkan Kode Tracking (Contoh: PZN-20251008-001 atau
+          PZN-20251009-002)
+        </p>
+        <div class="tracking-form">
+          <input
+            type="text"
+            placeholder="Masukkan Kode Tracking"
+            id="tracking-input"
+            oninput="handleTrackingInput()"
+          />
+          <button onclick="checkStatus()">
+            <i class="fas fa-search"></i> Cek Status
+          </button>
+        </div>
+
+        <div id="tracking-result" class="status-timeline hidden">
+          <h3>Status Permohonan</h3>
+          <div class="timeline-item completed">
+            <i class="fas fa-check-circle"></i>
+            <div>
+              <h4>1. Pengajuan Dokumen Online</h4>
+              <p>10 Okt 2025, 09:30 WIB | Pemohon: Bpk. Andi</p>
+            </div>
+          </div>
+          <div class="timeline-item active">
+            <i class="fas fa-spinner fa-spin"></i>
+            <div>
+              <h4>2. Verifikasi Administrasi</h4>
+              <p>10 Okt 2025, 14:00 WIB | Petugas: Siti M.</p>
+              <span class="note" style="color: #007bff"
+                >Status: Menunggu validasi kelengkapan dokumen.</span
+              >
+            </div>
+          </div>
+          <div class="timeline-item pending">
+            <i class="far fa-circle"></i>
+            <div>
+              <h4>3. Survei Lapangan</h4>
+              <p>Belum Dimulai | Penanggung Jawab: Bidang Teknik</p>
+            </div>
+          </div>
+          <div class="timeline-item pending">
+            <i class="far fa-circle"></i>
+            <div>
+              <h4>4. Penerbitan Izin</h4>
+              <p>Belum Dimulai</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 SIMPEL Terpadu | Direktorat Pelayanan Perizinan</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      function checkLogin() {
+        if (
+          localStorage.getItem("isLoggedIn") === "true" &&
+          localStorage.getItem("role") === "pemohon"
+        ) {
+          return true;
+        } else {
+          window.location.href = "login.html";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
